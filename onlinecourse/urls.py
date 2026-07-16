@@ -7,7 +7,7 @@ app_name = 'onlinecourse'
 
 urlpatterns = [
     # Home page showing course list
-    path(route='', view=views.CourseListView.as_view(), name='index'),
+    path('', views.CourseListView.as_view(), name='index'),
 
     # Authentication routes
     path('registration/', views.registration_request, name='registration'),
@@ -19,10 +19,9 @@ urlpatterns = [
     path('<int:course_id>/enroll/', views.enroll, name='enroll'),
 
     # Exam submission route
-    path('<int:course_id>/submit/', views.submit, name="submit"),
+    path('<int:course_id>/submit/', views.submit, name='submit'),
 
     # Exam result route
     path('course/<int:course_id>/submission/<int:submission_id>/result/',
-         views.show_exam_result, name="exam_result"),
+         views.show_exam_result, name='exam_result'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
- 
